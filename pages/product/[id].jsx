@@ -30,7 +30,6 @@ const Product = ({ pizza }) => {
       setExtras(extras.filter((extra) => extra._id !== option._id));
     }
   };
-  console.log('quantity->', quantity);
 
   return (
     <div className={styles.container}>
