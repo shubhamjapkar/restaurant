@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from '../styles/OrderDetail.module.css';
 
-const OrderDetail = () => {
+const OrderDetail = ({createOrder}) => {
   const [customer, setCustomer] = useState('');
   const [address, setAddress] = useState('');
   return (
@@ -14,6 +14,10 @@ const OrderDetail = () => {
             placeholder="John Doe"
             type="text"
             className={styles.input}
+            onKeyPress={(e)=>{
+              if (e.key === 'Enter')
+                createOrder();
+            }}
             onChange={(e) => setCustomer(e.target.value)}
           />
         </div>

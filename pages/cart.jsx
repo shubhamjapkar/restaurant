@@ -28,7 +28,13 @@ const Cart = () => {
   //Create a new order
   const createOrder = async (data) => {
     try {
-      const res = await axios.post('http://localhost:3000/api/orders', data);
+      const res = await axios.post('http://localhost:3000/api/orders', {
+        "customer": "John Doe",
+        "address": "123 Main Street, City, Country",
+        "total": 100.50,
+        "status": 0,
+        "method": 1
+      });
       res.status === 201 && router.push('/orders/' + res.data._id);
       dispatch(reset());
     } catch (err) {
@@ -114,7 +120,7 @@ const Cart = () => {
               <tr className={styles.tr} key={product._id}>
                 <td>
                   <div className={styles.imgContainer}>
-                    <Image src={product.img} fill objectFit="cover" alt="" />
+                    {/*<Image src={product.img} fill objectFit="cover" alt="" />*/}
                   </div>
                 </td>
                 <td>
